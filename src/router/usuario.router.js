@@ -9,6 +9,9 @@ const usuarios_controller = require("../controller/usuarios_controller");
 //ver todos os usuarios
 usuariosRoute.get("/", (req,res)=> usuarios_controller.getUser(req,res));
 
+//Criar Usuario
+usuariosRoute.post("/", (req,res)=> usuarios_controller.createUser(req,res));
+
 
 
 module.exports = usuarioRoute;

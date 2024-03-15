@@ -1,6 +1,6 @@
 const express = require('express') ;
 const usuariosRoute = express.Router();
-const usuarios_controller = require("../controller/usuarios_controller");
+const usuarios_controller = require("../controllers/usuarios_controller");
 
 // inclusao middlwares
 const findUser = require("../middleware/findUser")

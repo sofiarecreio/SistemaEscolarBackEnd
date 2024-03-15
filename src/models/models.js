@@ -1,3 +1,6 @@
+const { DataTypes } = require("sequelize");
+const { v4: uuidv4 } = require("uuid");
+
 //Modelo de Usuário
 const User = sequelize.define("User", {
     Userid: {

@@ -1,18 +1,18 @@
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize ({
+const sequelize = new Sequelize({
     dialect: "sqlite",
-    storage: "./data/database.sqlite"
+    storage: "./data/database.sqlite",
 });
 
-async function testConnectionDatabase() {
+async function testConnectionDataBase() {
     try {
-        await sequelize.authenticate()
+        await sequelize.authenticate();
     } catch (error) {
-        console.log("Não foi possível se conectar ao banco de dados")
+        console.log("Não foi possível se conectar com o banco de dados");
     }
-};
+}
 
-testConnectionDatabase();
+testConnectionDataBase();
 
 module.exports = sequelize;

@@ -21,4 +21,4 @@ usuariosRoute.put("/:id", findUser, (req,res)=> usuarios_controller.updateUser(r
 
 
 
-module.exports = usuarioRoute;
+module.exports = usuariosRoute;

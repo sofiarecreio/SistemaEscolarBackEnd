@@ -20,4 +20,8 @@ const Turmas = sequelize.define("Turmas", {
             max: 9
         }
     }
-})
+});
+
+module.exports = {
+    Turmas
+}

@@ -4,6 +4,23 @@ const { v4: uuidv4 } = require("uuid");
 
 const sequelize = require("../../config/database");
 
+//Modelos de Professores
+const Professores = sequelize.define("Professor", {
+    id: {
+        type: DataTypes.UUIDV4,
+        defaultValue: () => uuidv4(),
+        primaryKey: true,
+    },
+    nome: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    cpf: {
+       type: DataTypes.STRING,
+       allowNull: false, 
+    }
+});
+
 //Modelo de Aluno
 const Alunos = sequelize.define("User", {
     id: {
@@ -34,5 +51,6 @@ const Alunos = sequelize.define("User", {
 });
 
 module.exports = {
-    Alunos
+    Alunos,
+    Professores
 }

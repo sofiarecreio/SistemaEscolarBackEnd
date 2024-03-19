@@ -20,7 +20,7 @@ const Usuarios = sequelize.define("Usuario", {
         allowNull: false,
     },
     cargoId: {
-        type: DataTypes.ENUM("aluno", "professor", "secretario", "coordenador"),
+        type: DataTypes.ENUM("aluno", "professor", "secretario", "coordenador", "administrador"),
         allowNull: false,
     }
 });

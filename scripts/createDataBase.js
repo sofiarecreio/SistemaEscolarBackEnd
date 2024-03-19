@@ -1,18 +1,12 @@
-const { Sequelize } = require("sequelize");
+const sequelize = require("../config/database");
 
-const sequelize = new Sequelize({
-    dialect: "sqlite",
-    storage: "./data/database.sqlite",
-});
-
-async function testConnectionDataBase() {
-    try {
-        await sequelize.authenticate();
-    } catch (error) {
-        console.log("Não foi possível se conectar com o banco de dados");
-    }
+async function createDataBase() {
+  try {
+    await sequelize.sync({ alter: true });
+    console.log("Banco de Dados criado com sucesso");
+  } catch (error) {
+    console.log("Erro na criação do Banco de Dados");
+  }
 }
 
-testConnectionDataBase();
-
-module.exports = sequelize;
+module.exports = createDataBase;

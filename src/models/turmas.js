@@ -21,3 +21,7 @@ const Turmas = sequelize.define("Turmas", {
         }
     }
 })
+
+module.exports = {
+    Turmas
+}

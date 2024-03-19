@@ -15,7 +15,7 @@ async function getUser (req,res){
 async function createUser (req,res){
     try {
         const dados = req.body
-        const Usuario = Usuario.create(
+        const usuario = Usuario.create(
             dados);
 
     } catch (error) {

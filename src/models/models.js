@@ -2,9 +2,11 @@
 const { DataTypes } = require("sequelize");
 const { v4: uuidv4 } = require("uuid");
 
-//Modelo de Usuário
-const User = sequelize.define("User", {
-    Userid: {
+const sequelize = require("../../config/database");
+
+//Modelo de Aluno
+const Alunos = sequelize.define("User", {
+    id: {
         type: DataTypes.UUIDV4,
         defaultValue: () => uuidv4(),
         primaryKey: true
@@ -30,3 +32,7 @@ const User = sequelize.define("User", {
         allowNull: false,
     }
 });
+
+module.exports = {
+    Alunos
+}

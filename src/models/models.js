@@ -1,4 +1,3 @@
-
 const { DataTypes } = require("sequelize");
 const { v4: uuidv4 } = require("uuid");
 
@@ -16,13 +15,13 @@ const Professores = sequelize.define("Professor", {
         allowNull: false,
     },
     cpf: {
-       type: DataTypes.STRING,
+       type: DataTypes.STRING(11),
        allowNull: false, 
     }
 });
 
 //Modelo de Aluno
-const Alunos = sequelize.define("User", {
+const Alunos = sequelize.define("Aluno", {
     id: {
         type: DataTypes.UUIDV4,
         defaultValue: () => uuidv4(),
@@ -52,5 +51,6 @@ const Alunos = sequelize.define("User", {
 
 module.exports = {
     Alunos,
-    Professores
-}
+    Professores,
+    Usuarios
+};

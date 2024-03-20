@@ -29,3 +29,14 @@ async function getProfessores(req, res) {
     }
 }
 
+async function deleteProfessor(req, res) {
+    const {id} = req.params
+    try {
+        const professor = await Professores.findOne({where: {id:id}})
+        await professor.delete()
+        return res.status(200).json(professor)
+    }
+    catch (error) {
+        return res.status(400).json({ error: "nao foi possivel deletar o professor" })
+}}
+

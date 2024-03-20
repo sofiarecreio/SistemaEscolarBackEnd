@@ -19,3 +19,13 @@ async function criarProfessor(req, res) {
     }
 }
 
+async function getProfessores(req, res) {
+    try {
+        const professores = await Professores.findAll()
+        return res.status(200).json(professores)
+
+    } catch (error) {
+        return res.status(400).json({ error: "nao foi possivel listar os professores" })
+    }
+}
+

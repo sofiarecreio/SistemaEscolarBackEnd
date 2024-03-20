@@ -53,7 +53,36 @@ const Alunos = sequelize.define("Aluno", {
     }
 });
 
+//Modelo de Coordenador
+const Coordenador = sequelize.define("Coordenador", {
+    id: {
+        type: DataTypes.UUIDV4,
+        defaultValue: () => uuidv4(),
+        primaryKey: true
+    },
+    nome: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    cpf: {
+        type: DataTypes.STRING(11),
+        allowNull: false,
+    },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    // A senha é criptografada
+    senhaHash: {
+        type: DataTypes.STRING,
+        set(value) {
+            this.setDataValue('password', hash(value));
+        }
+    },
+});
+
 module.exports = {
     Alunos,
-    Usuarios
+    Usuarios,
+    Coordenador
 }

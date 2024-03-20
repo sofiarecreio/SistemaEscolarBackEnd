@@ -40,3 +40,20 @@ async function deleteProfessor(req, res) {
         return res.status(400).json({ error: "nao foi possivel deletar o professor" })
 }}
 
+async function updateProfessor(req, res){
+    const {id} = req.params
+    try {
+        const professor = await Professores.findOne({where: {id:id}})
+        await professor.update(req.body)
+        return res.status(200).json(professor)
+    }
+    catch (error) {
+        return res.status(400).json({ error: "nao foi possivel deletar o professor" })
+}}
+
+module.exports = {
+    deleteProfessor,
+    criarProfessor,
+    getProfessores,
+    updateProfessor
+}

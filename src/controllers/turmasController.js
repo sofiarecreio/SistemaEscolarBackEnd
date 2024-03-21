@@ -1,7 +1,4 @@
-const { Op } = require("sequelize");
 const {Turma} = require("../models/models")
-const { v4: uuidv4 } = require('uuid');
-
 
 async function criarTurma(req, res) {
     try {
@@ -14,14 +11,14 @@ async function criarTurma(req, res) {
             Turno,
             Serie
             
-        })
+        });
 
         return res.status(201).json(turma)
     } catch (error) {
         console.log(error)
         return res.status(400).json({ error: "nao foi possivel criar o turma" })
     }
-}
+};
 
 async function getTurma(req, res) {
     try {
@@ -29,9 +26,9 @@ async function getTurma(req, res) {
         return res.status(200).json(turmas)
 
     } catch (error) {
-        return res.status(400).json({ error: "nao foi possivel listar as Turmas" })
+        return res.status(400).json({ error: "nao foi possivel listar as Turmas" });
     }
-}
+};
 
 async function deleteTurma(req, res) {
     const {id} = req.params
@@ -42,7 +39,8 @@ async function deleteTurma(req, res) {
     }
     catch (error) {
         return res.status(400).json({ error: "nao foi possivel deletar a turma" })
-}}
+    }
+};
 
 async function updateTurma(req, res){
     const {id} = req.params
@@ -53,11 +51,12 @@ async function updateTurma(req, res){
     }
     catch (error) {
         return res.status(400).json({ error: "nao foi possivel deletar a turma" })
-}}
+    }
+};
 
 module.exports = {
     deleteTurma,
     criarTurma,
     getTurma,
     updateTurma
-}
+};

@@ -20,7 +20,7 @@ avaliacoesRoutes.get("/:avaliacaoId", findAvaliacao, (req, res) => avaliacaoCont
 );
 
 //Atualizar Avaliação
-avaliacoesRoutes.patch('/:avaliacaoId', findAvaliacao, (req, res) => avaliacaoController.updateAvaliacao(req, res),
+avaliacoesRoutes.put('/:avaliacaoId', findAvaliacao, (req, res) => avaliacaoController.updateAvaliacao(req, res),
 );
 
 //Deletar Avaliação

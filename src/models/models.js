@@ -24,6 +24,27 @@ const Usuarios = sequelize.define("Usuario", {
     }
 });
 
+//Modelo de Turma
+const Turmas = sequelize.define("Turmas", {
+    id: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+        allowNull: false,
+    },
+    turno: {
+        type: DataTypes.ENUM("manhã", "tarde"),
+        allowNull: false,
+    },
+    serie: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+            min: 1,
+            max: 9
+        }
+    }
+});
+
 //Modelo de Aluno
 const Alunos = sequelize.define("Aluno", {
     id: {
@@ -84,5 +105,6 @@ const Coordenadores = sequelize.define("Coordenador", {
 module.exports = {
     Alunos,
     Usuarios,
-    Coordenadores
-}
+    Coordenadores,
+    Turmas
+};

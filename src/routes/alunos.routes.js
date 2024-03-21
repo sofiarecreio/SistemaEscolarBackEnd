@@ -18,7 +18,7 @@ alunosRoutes.get('/', (req, res) => alunoController.getAllAluno(req, res));
 alunosRoutes.get('/:id', findAluno, (req, res) => alunoController.getByIdAluno(req, res));
 
 //Atualizar aluno
-alunosRoutes.patch('/:id', findAluno, (req, res) => alunoController.updateAluno(req, res));
+alunosRoutes.put('/:id', findAluno, (req, res) => alunoController.updateAluno(req, res));
 
 // Deletar aluno
 alunosRoutes.delete('/:id', findAluno, (req,res) => alunoController.deleteAluno(req, res));

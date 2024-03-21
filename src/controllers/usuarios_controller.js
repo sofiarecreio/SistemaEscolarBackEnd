@@ -1,9 +1,9 @@
-const { Usuario } = require("../models/models") // supondo que models esteja pronto
+const { Usuarios } = require("../models/models") // supondo que models esteja pronto
 
 //listar usuarios
 async function getUser (req,res){
     try {
-        const Users = await Usuario.findAll()
+        const Users = await Usuarios.findAll()
         return res.status(200).json(Users)
     } catch (error) {
         console.log(error)
@@ -15,9 +15,9 @@ async function getUser (req,res){
 async function createUser (req,res){
     try {
         const dados = req.body
-        const usuario = Usuario.create(
+        const usuario = Usuarios.create(
             dados);
-
+        return res.status(200).json(usuario)        
     } catch (error) {
         console.log(error)
         return  res.status(500).json({error : "nao foi possivel criar o usuario"})

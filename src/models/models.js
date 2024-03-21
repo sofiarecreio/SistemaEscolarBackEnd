@@ -54,7 +54,7 @@ const Alunos = sequelize.define("Aluno", {
 });
 
 //Modelo de Coordenador
-const Coordenador = sequelize.define("Coordenador", {
+const Coordenadores = sequelize.define("Coordenador", {
     id: {
         type: DataTypes.UUIDV4,
         defaultValue: () => uuidv4(),
@@ -84,5 +84,5 @@ const Coordenador = sequelize.define("Coordenador", {
 module.exports = {
     Alunos,
     Usuarios,
-    Coordenador
+    Coordenadores
 }

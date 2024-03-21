@@ -1,9 +1,9 @@
-const { Usuario } = require("../models/models");
+const { Usuarios } = require("../models/models");
 
 // encontrar usuario
 async function findUser (req,res,next){
     const { id } = req.params;
-    const user = await Usuario.findByPk(id);
+    const user = await Usuarios.findByPk(id);
     
     if(!user){
         return res.status(400).json({error:'nao encontrado'})
@@ -11,6 +11,6 @@ async function findUser (req,res,next){
 
     req.user = user;
     next()
-}
+};
 
 module.exports = findUser;

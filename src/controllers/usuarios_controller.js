@@ -14,9 +14,11 @@ async function getUser (req,res){
 //criar usuario
 async function createUser (req,res){
     try {
-        const { email, senha, cargoId } = req.body
+        const { email, senha, cargoId , nome, cpf} = req.body
         const usuario = await Usuarios.create(
             {
+                nome,
+                cpf,
                 email,
                 senha,
                 cargoId

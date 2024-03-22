@@ -14,10 +14,14 @@ async function getUser (req,res){
 //criar usuario
 async function createUser (req,res){
     try {
-        const dados = req.body
-        const usuario = Usuarios.create(
-            dados);
-        return res.status(200).json(usuario)        
+        const { email, senha, cargoId } = req.body
+        const usuario = await Usuarios.create(
+            {
+                email,
+                senha,
+                cargoId
+            });
+        return res.status(201).json(usuario)        
     } catch (error) {
         console.log(error)
         return  res.status(500).json({error : "nao foi possivel criar o usuario"})

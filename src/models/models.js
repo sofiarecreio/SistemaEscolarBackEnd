@@ -34,8 +34,8 @@ const Professores = sequelize.define("Professor", {
 //Modelo de Usuário
 const Usuarios = sequelize.define("Usuario", {
     id: {
-        type: DataTypes.UUIDV4,
-        defaultValue: () => uuidv4(),
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
     },
     email: {

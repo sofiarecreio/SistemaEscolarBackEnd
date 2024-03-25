@@ -1,5 +1,6 @@
 const express = require('express');
 const swaggerUi = require("swagger-ui-express");
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
@@ -7,6 +8,8 @@ const port = 3000;
 const router = require('./routes/index');
 const swaggerFile = require("./swagger.json"); 
 const createDataBase = require('../scripts/createDataBase');
+
+app.use(cors());
 
 app.use(express.json());
 

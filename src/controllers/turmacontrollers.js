@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const {Turma} = require("../models/turmas")
+const { Turmas } = require("../models/turmas.js")
 const { v4: uuidv4 } = require('uuid');
 
 
@@ -9,7 +9,7 @@ async function criarTurma(req, res) {
         console.log(req.body)
         const { Numero, Turno, Serie } = req.body
         console.log(req.body)
-        const turma = await Turma.create({
+        const turma = await Turmas.create({
             Numero,
             Turno,
             Serie
@@ -25,7 +25,7 @@ async function criarTurma(req, res) {
 
 async function getTurma(req, res) {
     try {
-        const turmas = await Turma.findAll()
+        const turmas = await Turmas.findAll()
         return res.status(200).json(turmas)
 
     } catch (error) {
@@ -36,7 +36,7 @@ async function getTurma(req, res) {
 async function deleteTurma(req, res) {
     const {id} = req.params
     try {
-        const turma = await Turma.findOne({where: {id:id}})
+        const turma = await Turmas.findOne({where: {id:id}})
         await turma.delete()
         return res.status(200).json(turma)
     }
@@ -47,7 +47,7 @@ async function deleteTurma(req, res) {
 async function updateTurma(req, res){
     const {id} = req.params
     try {
-        const turma = await Turma.findOne({where: {id:id}})
+        const turma = await Turmas.findOne({where: {id:id}})
         await turma.update(req.body)
         return res.status(200).json(turma)
     }

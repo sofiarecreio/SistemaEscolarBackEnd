@@ -3,12 +3,20 @@ const Router = require('express');
 
 const turmasRoutes = require("./turmas.routes");
 
-const userRoutes = require('./user.routes');
+const userRoutes = require('./usuario.router');
+
+const alunosRoutes = require('./alunos.routes');
+
+const coordenadorRoutes = require('./coordenador.routes');
 
 const router = Router();
 
 router.use('/users', userRoutes);
 
-router.use("/api/turmas", turmasRoutes);
+router.use("/turmas", turmasRoutes);
+
+router.use("/alunos", alunosRoutes);
+
+router.use("/coordenador", coordenadorRoutes)
 
 module.exports = router;

@@ -11,7 +11,7 @@ const findUser = require("../middleware/findUser")
 usuariosRoute.get("/", (req,res)=> usuarios_controller.getUser(req,res));
 
 //Criar Usuario
-usuariosRoute.post("/", (req,res)=> usuarios_controller.createUser(req,res));
+usuariosRoute.post("/register", (req,res)=> usuarios_controller.createUser(req,res));
 
 //Deletar usuario
 usuariosRoute.delete("/:id", findUser, (req,res)=> usuarios_controller.deleteUser(req,res));
@@ -21,4 +21,4 @@ usuariosRoute.put("/:id", findUser, (req,res)=> usuarios_controller.updateUser(r
 
 
 
-module.exports = usuarioRoute;
+module.exports = usuariosRoute;

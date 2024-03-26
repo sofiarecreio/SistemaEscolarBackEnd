@@ -3,12 +3,48 @@ const { v4: uuidv4 } = require("uuid");
 
 const sequelize = require("../../config/database");
 
-//Modelo de Usuário
-const Usuarios = sequelize.define("Usuario", {
+//Modelos de Professores
+const Professores = sequelize.define("Professor", {
     id: {
         type: DataTypes.UUIDV4,
         defaultValue: () => uuidv4(),
         primaryKey: true,
+    },
+    nome: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    cpf: {
+       type: DataTypes.STRING(11),
+       allowNull: false, 
+    },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    // A senha é criptografada
+    senhaHash: {
+        type: DataTypes.STRING,
+        set(value) {
+            this.setDataValue('password', hash(value));
+        }
+    },
+});
+
+//Modelo de Usuário
+const Usuarios = sequelize.define("Usuario", {
+    id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        primaryKey: true,
+    },
+    nome: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    cpf: {
+        type: DataTypes.STRING,
+        allowNull: false,
     },
     email: {
         type: DataTypes.STRING,
@@ -104,6 +140,7 @@ const Coordenadores = sequelize.define("Coordenador", {
 
 module.exports = {
     Alunos,
+    Professores,
     Usuarios,
     Coordenadores,
     Turmas

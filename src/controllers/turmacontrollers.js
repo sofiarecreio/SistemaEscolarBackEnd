@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const {Turma} = require("../models/models")
+const {Turma} = require("../models/turmas")
 const { v4: uuidv4 } = require('uuid');
 
 

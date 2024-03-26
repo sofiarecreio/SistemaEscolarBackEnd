@@ -9,16 +9,16 @@ const checkTurmaExists = require("../middleware/checkTurmaExistsMiddleware");
 
 
 
-//ver todos os turma
+//Ver todos as turmas
 turmasRoutes.get("/", (req,res)=> turmasController.getTurma(req,res));
 
-//Criar Usuario
+//Criar turma
 turmasRoutes.post("/", (req,res)=> turmasController.criarTurma(req,res));
 
-//Deletar usuario
+//Deletar turma
 turmasRoutes.delete("/:id", checkTurmaExists, (req,res)=> turmasController.deleteTurma(req,res));
 
-//atualizar usuario
+//atualizar turma
 turmasRoutes.put("/:id", checkTurmaExists, (req,res)=> turmasController.updateTurma(req,res));
 
 

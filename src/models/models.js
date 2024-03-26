@@ -117,10 +117,27 @@ const Coordenador = sequelize.define("Coordenador", {
     },
 });
 
+const Disciplina = sequelize.define("Disciplina", {
+    id: {
+        type: DataTypes.UUIDV4,
+        defaultValue: () => uuidv4(),
+        primaryKey: true
+    },
+    codigo: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    nome: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    }
+});
+
 module.exports = {
     Alunos,
     Professores,
     Usuarios,
-    Coordenador
+    Coordenador,
+    Disciplina
 };
 

@@ -1,13 +1,17 @@
 const { Op } = require("sequelize");
+
 const { Turmas } = require("../models/turmas")
+
 const { v4: uuidv4 } = require('uuid');
 
 
 async function criarTurma(req, res) {
     try {
+
         
         const { Turno, Serie } = req.body
         const turma = await Turmas.create({
+
             Turno,
             Serie
             

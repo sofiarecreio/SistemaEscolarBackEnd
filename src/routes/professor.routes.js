@@ -4,6 +4,7 @@ const professorRoutes = express.Router();
 const professorController = require("../controllers/professoresControllers.js");
 
 
+const findProfessor = require("../middleware/findProfessor")
 
 
 
@@ -15,10 +16,10 @@ professorRoutes.get("/", (req,res)=> professorController.getProfessores(req,res)
 professorRoutes.post("/", (req,res)=> professorController.criarProfessor(req,res));
 
 //Deletar professor
-professorRoutes.delete("/:id",  (req,res)=> professorController.deleteProfessor(req,res));
+professorRoutes.delete("/:id", findProfessor,  (req,res)=> professorController.deleteProfessor(req,res));
 
 //atualizar professor
-professorRoutes.put("/:id",  (req,res)=> professorController.updateProfessor(req,res));
+professorRoutes.put("/:id", findProfessor, (req,res)=> professorController.updateProfessor(req,res));
 
 
 module.exports = professorRoutes;

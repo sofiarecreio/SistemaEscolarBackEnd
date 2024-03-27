@@ -1,15 +1,15 @@
 const { Op } = require("sequelize");
-const { Disciplinas } = require("../models/disciplinas")
+const { Disciplina } = require("../models/models")
 const { v4: uuidv4 } = require('uuid');
 
 
 async function criarDisciplinas(req, res) {
     try {
         
-        const { Codigo, Nome } = req.body
-        const disciplina = await Disciplinas.create({
-            Codigo,
-            Nome
+        const { codigo, nome } = req.body
+        const disciplina = await Disciplina.create({
+            codigo,
+            nome
         })
 
         return res.status(201).json(disciplina)
@@ -21,7 +21,7 @@ async function criarDisciplinas(req, res) {
 
 async function getDisciplina(req, res) {
     try {
-        const disciplina = await Disciplinas.findAll()
+        const disciplina = await Disciplina.findAll()
         return res.status(200).json(disciplina)
 
     } catch (error) {
@@ -31,7 +31,7 @@ async function getDisciplina(req, res) {
 async function deleteDisciplina(req, res) {
     const {id} = req.params
     try {
-        const disciplina = await Disciplinas.findOne({where: {id:id}})
+        const disciplina = await Disciplina.findOne({where: {id:id}})
         await disciplina.delete()
         return res.status(200).json(disciplina)
     }
@@ -42,7 +42,7 @@ async function deleteDisciplina(req, res) {
 async function updateDisciplina(req, res){
     const {id} = req.params
     try {
-        const disciplina = await Disciplinas.findOne({where: {id:id}})
+        const disciplina = await Disciplina.findOne({where: {id:id}})
         await disciplina.update(req.body)
         return res.status(200).json(disciplina)
     }

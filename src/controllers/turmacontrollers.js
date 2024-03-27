@@ -9,11 +9,11 @@ async function criarTurma(req, res) {
     try {
 
         
-        const { Turno, Serie } = req.body
+        const { turno, serie } = req.body
         const turma = await Turmas.create({
 
-            Turno,
-            Serie
+            turno,
+            serie
             
         })
 

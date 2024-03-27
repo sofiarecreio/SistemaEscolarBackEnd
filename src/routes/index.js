@@ -8,6 +8,8 @@ const userRoutes = require('./usuario.router');
 const alunosRoutes = require('./alunos.routes');
 
 
+const disciplinaRoutes = require('./disciplina.routes')
+
 const professorRoutes = require('./professor.routes')
 
 const coordenadorRoutes = require('./coordenador.routes');
@@ -21,6 +23,8 @@ router.use("/turmas", turmasRoutes);
 router.use("/alunos", alunosRoutes);
 
 router.use("/professores", professorRoutes)
+
+router.use("/disciplinas", disciplinaRoutes)
 
 router.use("/coordenador", coordenadorRoutes)
 

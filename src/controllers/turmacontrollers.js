@@ -1,16 +1,17 @@
 const { Op } = require("sequelize");
-const { Turmas } = require("../models/turmas.js")
+
+const { Turmas } = require("../models/turmas")
+
 const { v4: uuidv4 } = require('uuid');
 
 
 async function criarTurma(req, res) {
     try {
-        console.log(req)
-        console.log(req.body)
-        const { Numero, Turno, Serie } = req.body
-        console.log(req.body)
+
+        
+        const { Turno, Serie } = req.body
         const turma = await Turmas.create({
-            Numero,
+
             Turno,
             Serie
             
@@ -18,7 +19,7 @@ async function criarTurma(req, res) {
 
         return res.status(201).json(turma)
     } catch (error) {
-        console.log(error)
+        
         return res.status(400).json({ error: "nao foi possivel criar o turma" })
     }
 }

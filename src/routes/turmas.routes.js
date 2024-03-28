@@ -1,7 +1,7 @@
 const express = require("express");
 
 const turmasRoutes = express.Router();
-const turmasController = require("../controllers/turmascontroller.js");
+const turmasController = require("../controllers/turmacontrollers.js");
 
 //Inclusão dos Middlewares
 const checkTurmaExists = require("../middleware/checkTurmaExistsMiddleware");

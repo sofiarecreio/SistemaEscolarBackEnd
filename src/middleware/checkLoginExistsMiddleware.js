@@ -2,10 +2,10 @@ const { Usuarios } = require("../models/models");
 
 async function checkUserExists( request, response, next) {
     try {
-        const { mail } = request.body;
+        const { email } = request.body;
         const user = await Usuarios.findOne({
             where: {
-                email: mail,
+                email: email,
 
             }
     })
@@ -22,6 +22,7 @@ async function checkUserExists( request, response, next) {
     }
     return next();
     } catch (error) {
+        console.log(error)
         return response
         .status(500)
         .json({error: "Erro ao checar se o email não existe!"})

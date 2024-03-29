@@ -1,26 +1,34 @@
 const { Op } = require("sequelize");
 
-const { Turmas } = require("../models/turmas")
+const { Turmas } = require("../models/models")
+const { Disciplina } = require("../models/models")
 
 const { v4: uuidv4 } = require('uuid');
 
 
 async function criarTurma(req, res) {
     try {
+        const { ano, turno, serie, disciplinas } = req.body;
 
-        
-        const { turno, serie } = req.body
+
+        // Crie a turma
         const turma = await Turmas.create({
-
+            ano,
             turno,
             serie
-            
-        })
+        });
 
-        return res.status(201).json(turma)
+        // Recupere as disciplinas do banco de dados com base nos IDs fornecidos
+        const disciplinasAssociadas = await Disciplina.findAll({ where: { id: disciplinas }});
+
+        // Associe as disciplinas à turma criada    
+        await turma.setDisciplinas(disciplinasAssociadas);
+
+        // Retorne a resposta com a turma criada
+        return res.status(201).json(turma);
     } catch (error) {
-        
-        return res.status(400).json({ error: "nao foi possivel criar o turma" })
+        console.error('Erro ao criar turma:', error);
+        return res.status(400).json({ error: "Não foi possível criar a turma" });
     }
 }
 

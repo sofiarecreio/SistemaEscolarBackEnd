@@ -161,6 +161,10 @@ const Disciplina = sequelize.define("Disciplina", {
     }
 });
 
+// Relacionando Turma com Disciplinas
+Turmas.hasMany(Disciplina, { as: 'disciplinas' });
+
+
 module.exports = {
     Alunos,
     Professores,

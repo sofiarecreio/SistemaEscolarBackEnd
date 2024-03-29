@@ -117,6 +117,34 @@ const Coordenador = sequelize.define("Coordenador", {
     },
 });
 
+const Turmas = sequelize.define("Turmas", {
+    id: {
+        type: DataTypes.UUIDV4,
+        defaultValue: () => uuidv4(),
+        primaryKey: true
+    },
+    ano: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+            min: 1,
+            max: 9
+        }
+    },
+    turno: {
+        type: DataTypes.ENUM("manhã", "tarde"),
+        allowNull: false,
+    },
+    serie: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+            min: 1,
+            max: 9
+        }
+    }
+})
+
 const Disciplina = sequelize.define("Disciplina", {
     id: {
         type: DataTypes.UUIDV4,
@@ -138,6 +166,7 @@ module.exports = {
     Professores,
     Usuarios,
     Coordenador,
-    Disciplina
+    Disciplina,
+    Turmas
 };
 

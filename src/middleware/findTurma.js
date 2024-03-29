@@ -1,4 +1,4 @@
-const { Turmas } = require("../models/turmas");
+const { Turmas } = require("../models/models");
 
 // encontrar turma
 async function findTurma (req,res,next){

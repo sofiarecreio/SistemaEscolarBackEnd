@@ -126,10 +126,7 @@ const Turmas = sequelize.define("Turmas", {
     ano: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        validate: {
-            min: 1,
-            max: 9
-        }
+
     },
     turno: {
         type: DataTypes.ENUM("manhã", "tarde"),

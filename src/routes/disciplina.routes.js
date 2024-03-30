@@ -13,7 +13,7 @@ const findDisciplina = require("../middleware/findDisciplina")
 disciplinaRoutes.get("/", (req,res)=> disciplinaController.getDisciplina(req,res));
 
 //Criar disciplina
-disciplinaRoutes.post("/", (req,res)=> disciplinaController.cria(req,res));
+disciplinaRoutes.post("/", (req,res)=> disciplinaController.criarDisciplinas(req,res));
 
 //Deletar Disciplina
 disciplinaRoutes.delete("/:id", findDisciplina,  (req,res)=> disciplinaController.deleteDisciplina(req,res));

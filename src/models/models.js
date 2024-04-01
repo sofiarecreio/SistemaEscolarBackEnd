@@ -67,6 +67,14 @@ const Turmas = sequelize.define("Turmas", {
         primaryKey: true,
         allowNull: false,
     },
+    numero: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    ano: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
     turno: {
         type: DataTypes.ENUM("manhã", "tarde"),
         allowNull: false,
@@ -153,6 +161,17 @@ const Disciplina = sequelize.define("Disciplina", {
         allowNull: false,
     }
 });
+
+Turmas.beforeCreate(async (turma, options) => {
+    const numeroturma = await gerarProximoNumero(); 
+    turma.numero = `${numeroturma}/${turma.ano}`;
+});
+
+// Função para gerar o número da próxima turma
+async function gerarProximoNumero() {
+    let ultimoNumero = 1;
+    return ultimoNumero++;
+}
 
 // Relacionando Turma com Disciplinas
 Turmas.belongsToMany(Disciplina, { through: 'TurmaDisciplina' });

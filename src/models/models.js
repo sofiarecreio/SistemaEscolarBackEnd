@@ -138,10 +138,32 @@ const Coordenadores = sequelize.define("Coordenador", {
     },
 });
 
+const Disciplina = sequelize.define("Disciplina", {
+    id: {
+        type: DataTypes.UUIDV4,
+        defaultValue: () => uuidv4(),
+        primaryKey: true
+    },
+    codigo: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    nome: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    }
+});
+
+// Relacionando Turma com Disciplinas
+Turmas.belongsToMany(Disciplina, { through: 'TurmaDisciplina' });
+Disciplina.belongsToMany(Turmas, { through: 'TurmaDisciplina' });
+
+
 module.exports = {
     Alunos,
     Professores,
     Usuarios,
     Coordenadores,
-    Turmas
+    Disciplina,
+    Turmas,
 };

@@ -1,4 +1,4 @@
-const Turmas = require("../models/models");
+const { Turmas } = require("../models/models");
 
 async function checkTurmaExists( request, response, next) {
     try {

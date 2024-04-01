@@ -6,10 +6,12 @@ const { v4: uuidv4 } = require('uuid');
 async function criarProfessor(req, res) {
     try {
         
-        const { Nome, Cpf } = req.body
+        const { nome, cpf, email, senhaHash } = req.body
         const professor = await Professores.create({
-            Nome,
-            Cpf
+            nome,
+            cpf,
+            email,
+            senhaHash
             
         })
 

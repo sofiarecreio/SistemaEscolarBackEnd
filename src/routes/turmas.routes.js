@@ -24,4 +24,15 @@ turmasRoutes.delete("/:id", findTurma, (req,res)=> turmasController.deleteTurma(
 turmasRoutes.put("/:id", findTurma, (req,res)=> turmasController.updateTurma(req,res));
 
 
+//Listar turmas
+turmasRoutes.get("/", (request, response) =>
+turmasController.getTurma(request, response));
+
+//Atualizar turmas
+turmasRoutes.put("/:id", checkTurmaExists, (request, response) => turmasController.updateTurma(request, response));
+
+//Deletar turmas
+turmasRoutes.delete("/:id", checkTurmaExists, (request, response) =>
+turmasController.deleteTurma(request, response));
+
 module.exports = turmasRoutes;

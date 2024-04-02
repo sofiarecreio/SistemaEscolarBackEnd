@@ -60,6 +60,35 @@ const Usuarios = sequelize.define("Usuario", {
     }
 });
 
+//Modelo de Turma
+const Turmas = sequelize.define("Turmas", {
+    id: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+        allowNull: false,
+    },
+    numero: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    ano: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    turno: {
+        type: DataTypes.ENUM("manhã", "tarde"),
+        allowNull: false,
+    },
+    serie: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+            min: 1,
+            max: 9
+        }
+    }
+});
+
 //Modelo de Aluno
 const Alunos = sequelize.define("Aluno", {
     id: {
@@ -90,7 +119,7 @@ const Alunos = sequelize.define("Aluno", {
 });
 
 //Modelo de Coordenador
-const Coordenador = sequelize.define("Coordenador", {
+const Coordenadores = sequelize.define("Coordenador", {
     id: {
         type: DataTypes.UUIDV4,
         defaultValue: () => uuidv4(),
@@ -117,31 +146,6 @@ const Coordenador = sequelize.define("Coordenador", {
     },
 });
 
-const Turmas = sequelize.define("Turmas", {
-    id: {
-        type: DataTypes.UUIDV4,
-        defaultValue: () => uuidv4(),
-        primaryKey: true
-    },
-    ano: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-
-    },
-    turno: {
-        type: DataTypes.ENUM("manhã", "tarde"),
-        allowNull: false,
-    },
-    serie: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-            min: 1,
-            max: 9
-        }
-    }
-})
-
 const Disciplina = sequelize.define("Disciplina", {
     id: {
         type: DataTypes.UUIDV4,
@@ -158,6 +162,17 @@ const Disciplina = sequelize.define("Disciplina", {
     }
 });
 
+Turmas.beforeCreate(async (turma, options) => {
+    const numeroturma = await gerarProximoNumero(); 
+    turma.numero = `${numeroturma}/${turma.ano}`;
+});
+
+// Função para gerar o número da próxima turma
+async function gerarProximoNumero() {
+    let ultimoNumero = 1;
+    return ultimoNumero++;
+}
+
 // Relacionando Turma com Disciplinas
 Turmas.belongsToMany(Disciplina, { through: 'TurmaDisciplina' });
 Disciplina.belongsToMany(Turmas, { through: 'TurmaDisciplina' });
@@ -167,8 +182,7 @@ module.exports = {
     Alunos,
     Professores,
     Usuarios,
-    Coordenador,
+    Coordenadores,
     Disciplina,
-    Turmas
+    Turmas,
 };
-

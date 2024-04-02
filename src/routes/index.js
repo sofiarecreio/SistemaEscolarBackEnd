@@ -1,4 +1,3 @@
-
 const Router = require('express');
 
 const turmasRoutes = require("./turmas.routes");
@@ -7,6 +6,7 @@ const userRoutes = require('./usuario.router');
 
 const alunosRoutes = require('./alunos.routes');
 
+const avaliacoesRoutes = require("./avaliacoes.routes");
 
 const disciplinaRoutes = require('./disciplina.routes')
 
@@ -23,6 +23,10 @@ router.use('/users', userRoutes);
 router.use("/turmas", turmasRoutes);
 
 router.use("/alunos", alunosRoutes);
+
+router.use("/avaliacoes", avaliacoesRoutes);
+
+router.use("/coordenador", coordenadorRoutes);
 
 router.use("/professores", professorRoutes)
 

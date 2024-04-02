@@ -19,6 +19,4 @@ usuariosRoute.delete("/:id", findUser, (req,res)=> usuarios_controller.deleteUse
 //atualizar usuario
 usuariosRoute.put("/:id", findUser, (req,res)=> usuarios_controller.updateUser(req,res));
 
-
-
 module.exports = usuariosRoute;

@@ -43,10 +43,9 @@ async function getTurma(req, res) {
 }
 
 async function deleteTurma(req, res) {
-    const {id} = req.params
+    const turma = req.turma
     try {
-        const turma = await Turmas.findOne({where: {id:id}})
-        await turma.delete()
+        await turma.destroy()
         return res.status(200).json(turma)
     }
     catch (error) {

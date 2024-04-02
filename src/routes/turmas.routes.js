@@ -12,7 +12,7 @@ const findTurma = require("../middleware/findTurma")
 
 
 //Ver todos as turmas
-turmasRoutes.get("/",checkTurmaExists, (req,res)=> turmasController.getTurma(req,res));
+turmasRoutes.get("/", (req,res)=> turmasController.getTurma(req,res));
 
 //Criar turma
 turmasRoutes.post("/", (req,res)=> turmasController.criarTurma(req,res));

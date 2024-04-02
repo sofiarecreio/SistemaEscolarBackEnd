@@ -12,6 +12,9 @@ const findDisciplina = require("../middleware/findDisciplina")
 //Ver todos as disciplinas
 disciplinaRoutes.get("/", (req,res)=> disciplinaController.getDisciplina(req,res));
 
+//Exibir Disciplina
+disciplinaRoutes.get("/:id", findDisciplina, (req,res)=> disciplinaController.getDisciplina(req,res));
+
 //Criar disciplina
 disciplinaRoutes.post("/", (req,res)=> disciplinaController.criarDisciplinas(req,res));
 

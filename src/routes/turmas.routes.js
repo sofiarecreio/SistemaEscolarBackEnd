@@ -9,7 +9,6 @@ const checkTurmaExists = require("../middleware/checkTurmaExistsMiddleware");
 const findTurma = require("../middleware/findTurma")
 
 
-getTurmaById
 
 //Ver todos as turmas
 turmasRoutes.get("/", (req,res)=> turmasController.getTurma(req,res));

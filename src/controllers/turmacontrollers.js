@@ -63,9 +63,25 @@ async function updateTurma(req, res){
         return res.status(400).json({ error: "nao foi possivel deletar a turma" })
 }}
 
+async function getTurmaById(req, res) {
+    
+    const { id } = req.params
+    try {
+        
+        const turma = await Turmas.findByPk(id)
+        
+        
+        res.status(200).json(turma)
+    } catch (error) {
+      
+        res.status(500).json(error)
+    }
+}
+
 module.exports = {
     deleteTurma,
     criarTurma,
     getTurma,
-    updateTurma
+    updateTurma,
+    getTurmaById
 }

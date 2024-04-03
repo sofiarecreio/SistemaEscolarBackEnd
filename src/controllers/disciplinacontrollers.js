@@ -28,6 +28,16 @@ async function getDisciplina(req, res) {
         return res.status(400).json({ error: "nao foi possivel listar as disciplinas" })
     }
 }
+
+//Buscar disciplina pelo id
+function getDisciplinaById(req, res) {
+    const { disciplina } = req;
+      
+    return res
+        .status(200)
+        .json(disciplina);
+};
+
 async function deleteDisciplina(req, res) {
     const {id} = req.params
     try {
@@ -53,6 +63,7 @@ async function updateDisciplina(req, res){
 module.exports = {
     criarDisciplinas,
     getDisciplina,
+    getDisciplinaById,
     deleteDisciplina,
     updateDisciplina
 }
